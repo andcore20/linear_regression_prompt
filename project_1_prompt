@@ -1,0 +1,53 @@
+Desenvolvimento do prompt
+
+-Esse prompt não foi o primeiro que usei, fui fazendo vários testes no inicio e dando preferência em editar o prompt original. 
+Em um momento ja tinha parte do código que parecia o que eu queria, então juntei o prompt e o código que gostei em um prompt,
+com isso a resposta me agradou mas tive que acrescentar um ou dois prompts para alguns ajustes.
+
+-Vale ressaltar que o ".str" que a IA estava colocando estava dando erro e mesmo eu colocando que era proibido usar ".str" toda vez tinha
+isso no código
+
+-Por mais que não seja um código complexo, ele foi realmente útil pois utilizei no meu relatório de Laboratório de controle. Contudo,
+ainda é necessário utilizar o prompt.
+
+- Prompt:
+
+tenho uma tabela em csv com duas colunas:  'Vref ' e  VL
+
+a tabela esta em df
+
+mude  'Vref ' para 'Vref' 
+
+proibido usar ".str"
+
+toque os onde tiver "," por "."
+
+converta da melhor maneiras essas colunas para que seja possivel plotar um grafico depois
+
+quero fazer um graficos de  Vref no eixo y e VL no eixo x
+
+plote os pontos 
+
+ajuste a escala, sabendo que em y o maximo é 12 e no minimo é 0
+
+ajuste a escala, sabendo que em x o maximo é 1 e no minimo é 0
+
+coloque os nomes das colunas nos respectivos eixos do grafico
+
+use esse como base:
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+url = '/content/drive/MyDrive/1.FACUL/2023_1/Lab controle e servo mecanismo/tabela_3.csv'
+df = pd.read_csv(url)
+
+# Renomear a coluna 'Vref ' para 'Vref'
+df.rename(columns={'Vref ': 'Vref'}, inplace=True)
+
+# Substituir ',' por '.' na coluna 'Vref'
+df['Vref'] = df['Vref'].replace(',', '.')
+
+# Remover linhas com valores nulos ou inválidos
+df = df.dropna()
